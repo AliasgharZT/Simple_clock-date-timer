@@ -1,0 +1,64 @@
+
+<Style>:
+    timer:time
+    dates:date  
+    clocks:clock
+
+    MDAnchorLayout:
+        name:'clock'
+        anchor_x:'right'
+        anchor_y:'top'
+        MDLabel:
+            id:clock
+            size_hint:0.4,0.2
+            text:'00:00:00'
+            font_size:36
+            halign:'center'
+    MDAnchorLayout:
+        name:'date'
+        anchor_x:'left'
+        anchor_y:'top'
+        MDLabel:
+            id:date
+            size_hint:0.4,0.2
+            text:'0000:00:00' 
+            font_size:36
+            halign:'center'
+    MDAnchorLayout:
+        name:'active_date-clock'
+        anchor_x:'center'
+        anchor_y:'top'
+        MDFillRoundFlatButton:
+            text:'Active\nDate-clock'
+            on_press:
+                root._dates()
+                root.active_clock()
+    MDAnchorLayout:
+        name:'timer'
+        anchor_x:'center'
+        anchor_y:'center'
+        MDLabel:
+            id:time
+            size_hint:0.4,0.2
+            text:'00:00:00'
+            font_size:32
+            halign:'center'
+        MDAnchorLayout:
+            anchor_x:'center'
+            anchor_y:'center'
+            MDBoxLayout:
+                size_hint:0.4,0.3
+                MDFillRoundFlatButton:
+                    text:'reset'
+                    size_hint:0.4,0.2
+                    on_press:root._reset()
+                MDFillRoundFlatButton:
+                    text:'stop'
+                    size_hint:0.4,0.2
+                    on_press:root._stop()
+                MDFillRoundFlatButton:
+                    text:'start'
+                    size_hint:0.4,0.2
+                    on_press:root.active_start()
+
+
