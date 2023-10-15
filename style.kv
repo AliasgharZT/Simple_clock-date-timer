@@ -3,6 +3,10 @@
     timer:time
     dates:date  
     clocks:clock
+    actived:active
+    _start_stop:start_stop 
+    _reset_register:reset_register
+    _register:register
 
     MDAnchorLayout:
         name:'clock'
@@ -12,7 +16,7 @@
             id:clock
             size_hint:0.4,0.2
             text:'00:00:00'
-            font_size:36
+            font_size:46
             halign:'center'
     MDAnchorLayout:
         name:'date'
@@ -22,17 +26,20 @@
             id:date
             size_hint:0.4,0.2
             text:'0000:00:00' 
-            font_size:36
+            font_size:46
             halign:'center'
     MDAnchorLayout:
         name:'active_date-clock'
         anchor_x:'center'
         anchor_y:'top'
         MDFillRoundFlatButton:
+            id:active 
             text:'Active\nDate-clock'
+            md_bg_color:'green'
             on_press:
                 root._dates()
                 root.active_clock()
+                root.turn_on__turn_off()
     MDAnchorLayout:
         name:'timer'
         anchor_x:'center'
@@ -41,7 +48,7 @@
             id:time
             size_hint:0.4,0.2
             text:'00:00:00'
-            font_size:32
+            font_size:72
             halign:'center'
         MDAnchorLayout:
             anchor_x:'center'
@@ -49,16 +56,21 @@
             MDBoxLayout:
                 size_hint:0.4,0.3
                 MDFillRoundFlatButton:
+                    id:reset_register
                     text:'reset'
+                    md_bg_color:'blue'
                     size_hint:0.4,0.2
-                    on_press:root._reset()
+                    on_press:root._reset_register_()
                 MDFillRoundFlatButton:
-                    text:'stop'
-                    size_hint:0.4,0.2
-                    on_press:root._stop()
-                MDFillRoundFlatButton:
+                    id:start_stop
                     text:'start'
+                    md_bg_color:'blue'
                     size_hint:0.4,0.2
-                    on_press:root.active_start()
-
-
+                    on_press:root._start_stop_()
+    MDAnchorLayout:
+        anchor_x:'center'
+        anchor_y:'bottom'
+        MDScrollView:
+            size_hint:0.57,0.3
+            MDList:
+                id:register
